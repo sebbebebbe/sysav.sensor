@@ -1,0 +1,9 @@
+{
+    "name": "Sysav",
+    "content_in_root": false,
+    "country": "SWE",
+    "domains": ["sensors"],
+    "iot_class": "cloud_poll",
+    "homeassistant": "0.96.0",
+    "render_readme": true
+  }

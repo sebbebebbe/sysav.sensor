@@ -1,0 +1,7 @@
+{
+  "domain": "sysav",
+  "name": "Sysav waste gathering sensor",
+  "documentation": "",
+  "dependencies": [],
+  "codeowners": ["@sebbebebbe"]
+}
