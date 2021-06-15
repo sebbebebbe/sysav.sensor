@@ -1,10 +1,12 @@
 {
-    "domain": "sysav",
-    "name": "Sysav",
+    "domains": [
+        "sensor"
+      ],
+    "name": "sysav",
     "documentation": "https://github.com/sebbebebbe/sysav.sensor",
     "dependencies": [],
     "codeowners": ["@sebbebebbe"],
     "requirements": [],
     "iot_class": "cloud_polling",
-    "version": "1.0.3"
+    "version": "1.0.4"
   }
