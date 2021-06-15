@@ -6,5 +6,5 @@
     "iot_class": "cloud_poll",
     "homeassistant": "0.96.0",
     "render_readme": true,
-    "version": "1.0.0"
+    "version": "1.0.1"
   }
