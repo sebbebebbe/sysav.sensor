@@ -1,7 +1,10 @@
 {
+  "codeowners": ["@sebbebebbe"],
+  "config_flow": false,
+  "dependencies": [],
+  "documentation": "https://github.com/sebbebebbe/sysav.sensor",
   "domain": "sysav",
   "name": "Sysav waste gathering sensor",
-  "documentation": "",
-  "dependencies": [],
-  "codeowners": ["@sebbebebbe"]
+  "version": "1.1.0",
+  "requirements": []
 }
