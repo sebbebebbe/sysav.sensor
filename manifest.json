@@ -1,7 +1,5 @@
 {
-    "domains": [
-        "sensor"
-      ],
+    "domain": "sensor.sysav",
     "name": "sysav",
     "documentation": "https://github.com/sebbebebbe/sysav.sensor",
     "dependencies": [],
