@@ -108,7 +108,7 @@ class SysavData(object):
         try:
             suffix_url = self.street_name + " " + self.street_number + ", " + self.city
             suffix_url = urllib.parse.quote(suffix_url)
-            url = "https://www.sysav.se/api/my-pages/PickupSchedule/ScheduleForAddress?address" + suffix_url           
+            url = "https://www.sysav.se/api/my-pages/PickupSchedule/ScheduleForAddress?address=" + suffix_url           
             req = urllib.request.Request(url=url)
             req.add_header('Accept','application/json, text/javascript, */*; q=0.01')
             f = urllib.request.urlopen(req)
