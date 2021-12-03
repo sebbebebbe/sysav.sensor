@@ -1,7 +1,7 @@
 """
 Sensor component for Sysav waste schedule integration
 Original Author:  Sebastian Johansson
-Current Version:  1.0
+Current Version:  1.2
 
 Description:
   Provides sensors for Sysav waste collecting schedule
@@ -11,7 +11,8 @@ Configuration.yaml
   sensor:
     - platform: sysav
       streetname: Trädgårdsvägen               (required)
-      streetnumber: 2                  (required)
+      streetnumber: 2                          (required)
+      city: Bjärred                            (required)
       resources:
        - "Kärl 1"
        - "Kärl 2"
@@ -44,6 +45,7 @@ MIN_TIME_BETWEEN_UPDATES = timedelta(hours=1)
 
 CONF_STREET_NAME = "streetname"
 CONF_STREET_NUMBER = "streetnumber"
+CONF_CITY = "city"
 
 SENSOR_PREFIX = "Sysav "
 ATTR_LAST_UPDATE = "Last update"
@@ -60,6 +62,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.All(cv.ensure_list, [vol.In(SENSOR_TYPES)]),
         vol.Required(CONF_STREET_NAME, default=""): cv.string,
         vol.Required(CONF_STREET_NUMBER, default="1"): cv.string,
+        vol.Required(CONF_CITY, default=""): cv.string,
     }
 )
 
@@ -68,12 +71,14 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     
     street_name = config.get(CONF_STREET_NAME)
     street_number = config.get(CONF_STREET_NUMBER)
+    city = config.get(CONF_CITY)
     
     _LOGGER.debug("Sysav street_name: " + street_name)
-    _LOGGER.debug("Sysav street_number: " + street_number)  
+    _LOGGER.debug("Sysav street_number: " + street_number)
+    _LOGGER.debug("Sysav city: " + city)  
 
     try:
-        data = SysavData(street_name, street_number)
+        data = SysavData(street_name, street_number, city)
     except urllib.error.HTTPError as error:
         _LOGGER.error(error.reason)
         return False
@@ -93,16 +98,17 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
 
 class SysavData(object):
-    def __init__(self, street_name, street_number):
+    def __init__(self, street_name, street_number, city):
         self.data = []
         self.street_name = street_name
         self.street_number = street_number
+        self.city = city
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         try:
-            suffix_url = self.street_name + " " + self.street_number
+            suffix_url = self.street_name + " " + self.street_number + ", " + self.city
             suffix_url = urllib.parse.quote(suffix_url)
-            url = "https://www.sysav.se/api/wastepickup?searchText=" + suffix_url           
+            url = "https://www.sysav.se/api/my-pages/PickupSchedule/ScheduleForAddress?address" + suffix_url           
             req = urllib.request.Request(url=url)
             req.add_header('Accept','application/json, text/javascript, */*; q=0.01')
             f = urllib.request.urlopen(req)

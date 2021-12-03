@@ -36,3 +36,8 @@ Full example.
 ```
 
 [license-shield]: https://img.shields.io/github/license/custom-components/blueprint.svg?style=for-the-badge
+
+Version:
+
+v1.2.0:
+- Added support for Sysavs new endpoint and added city to the request as a required part in the configuration
