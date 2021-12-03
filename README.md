@@ -29,6 +29,7 @@ Full example.
     - platform: sysav
       streetname: Trädgårdsvägen       (required)
       streetnumber: 2                  (required)
+      city: Bjärred                    (required)
       resources:
        - "Kärl 1"
        - "Kärl 2"
