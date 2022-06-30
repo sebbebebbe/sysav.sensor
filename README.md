@@ -42,3 +42,6 @@ Version:
 
 v1.2.0:
 - Added support for Sysavs new endpoint and added city to the request as a required part in the configuration
+
+v1.2.1:
+- Added support for more types of resources Kävlinge kommun uses Matavfall and Restavfall instead of Kärl 1 and Kärl 2
