@@ -53,6 +53,8 @@ ATTR_LAST_UPDATE = "Last update"
 SENSOR_TYPES = {
     "Kärl 1": ["Kärl 1", "", "mdi:delete"],
     "Kärl 2": ["Kärl 2", "", "mdi:delete"],
+    "Matavfall": ["Matavfall", "", "mdi:delete"],
+    "Restavfall": ["Restavfall", "", "mdi:delete"],
     "Trädgårdsavfall": ["Trädgårdsavfall", "", "mdi:delete"],
 }
 
