@@ -1,7 +1,10 @@
 """
 Sensor component for Sysav waste schedule integration
 Original Author:  Sebastian Johansson
-Current Version:  1.2
+Current Version:  1.3
+
+Latest updates:
+    v1.3: Updated the url to match Sysav new api
 
 Description:
   Provides sensors for Sysav waste collecting schedule
@@ -110,7 +113,7 @@ class SysavData(object):
         try:
             suffix_url = self.street_name + " " + self.street_number + ", " + self.city
             suffix_url = urllib.parse.quote(suffix_url)
-            url = "https://www.sysav.se/api/my-pages/PickupSchedule/ScheduleForAddress?address=" + suffix_url           
+            url = "https://ca-weu-sysav-edp-api-prod.icypond-fdc05156.westeurope.azurecontainerapps.io/api/PickupSchedules/foraddress/" + suffix_url           
             req = urllib.request.Request(url=url)
             req.add_header('Accept','application/json, text/javascript, */*; q=0.01')
             f = urllib.request.urlopen(req)
@@ -164,8 +167,8 @@ class SysavSensor(Entity):
         try:
             if waste_data:
                 for container in waste_data:
-                    if container.get('WasteType') == self.type:
-                        self._state = container.get('NextPickupDate')
+                    if container.get('wasteType') == self.type:
+                        self._state = container.get('nextPickupDate')
                         self._last_update = datetime.today()
         except ValueError:
             self._state = None
