@@ -45,3 +45,10 @@ v1.2.0:
 
 v1.2.1:
 - Added support for more types of resources Kävlinge kommun uses Matavfall and Restavfall instead of Kärl 1 and Kärl 2
+
+v1.3:
+- Update the url for the Sysav API
+
+v1.4:
+- One again updated the url, sysav seems to like the automatically generated url from their
+  cloud services provider. Pro tip, please use a domain.
