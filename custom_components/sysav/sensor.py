@@ -1,10 +1,12 @@
 """
 Sensor component for Sysav waste schedule integration
 Original Author:  Sebastian Johansson
-Current Version:  1.3
+Current Version:  1.4
 
 Latest updates:
     v1.3: Updated the url to match Sysav new api
+    v1.4: One again updated the url, sysav seems to like the automatically generated url from their
+          cloud services provider. Pro tip, please use a domain.
 
 Description:
   Provides sensors for Sysav waste collecting schedule
@@ -113,7 +115,7 @@ class SysavData(object):
         try:
             suffix_url = self.street_name + " " + self.street_number + ", " + self.city
             suffix_url = urllib.parse.quote(suffix_url)
-            url = "https://ca-weu-sysav-edp-api-prod.icypond-fdc05156.westeurope.azurecontainerapps.io/api/PickupSchedules/foraddress/" + suffix_url           
+            url = "https://ca-swec-sysav-public-edp-prod.bluedune-a5ae63ed.swedencentral.azurecontainerapps.io/api/PickupSchedules/foraddress/" + suffix_url           
             req = urllib.request.Request(url=url)
             req.add_header('Accept','application/json, text/javascript, */*; q=0.01')
             f = urllib.request.urlopen(req)
